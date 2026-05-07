@@ -1,209 +1,218 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import './App.css';
 
 function OrderForm() {
-  // Form verilerini tek bir state içinde topluyoruz
-  const [formData, setFormData] = useState({
-    size: '',          // Boyut Seçimi
-    thickness: '',     // Hamur Seçimi
-    ingredients: [],   // Ek Malzemeler (Dizi olarak tutulacak)
-    note: ''           // Sipariş Notu
-  });
+  const history = useHistory();
 
-  // Pizza adet sayacı
+  // FORM STATE'LERİ
+  const [formData, setFormData] = useState({
+    size: '',
+    thickness: '',
+    ingredients: [], // Seçilen malzemeler dizi olarak tutulacak
+    note: ''
+  });
   const [quantity, setQuantity] = useState(1);
 
-  // Sabit fiyatlar (Senin tasarıma göre)
+  // Sabitler
   const basePrice = 85.50;
-  const ingredientPrice = 5.00;
+  const ingredientPrice = 5.00; // Ek malzeme başı fiyat
 
-  // Listelenecek ek malzemeler
+  // Mevcut Malzeme Listesi (Figma'dan)
   const availableIngredients = [
-    "Pepperoni", "Domates", "Biber", "Sosis", "Mısır", 
-    "Sucuk", "Kanada Jambonu", "Ananas", "Turşu", "Zeytin", 
-    "Jalapeno", "Sarımsak", "Mantar", "Ançüvez"
+    "Pepperoni", "Sucuk", "Kanada Jambonu", "Mantar", 
+    "Sosis", "Soğan", "Domates", "Biber",
+    "Tavuk Izgara", "Ananas", "Mısır", "Jalapeno", 
+    "Sarımsak", "Kabak", "Mısır" // Kabak ve mantar gibi Figma'daki diğerlerini ekleyebilirsin
   ];
 
-  // Genel input değişim fonksiyonu
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  // Checkbox (Malzeme) değişim fonksiyonu
-  const handleIngredientChange = (event) => {
-    const { value, checked } = event.target;
-    let updatedList = [...formData.ingredients];
+  // FONKSİYONLAR
+  const handleIngredientChange = (e) => {
+    const { value, checked } = e.target;
+    let updatedIngredients = [...formData.ingredients];
 
     if (checked) {
-      if (updatedList.length < 10) { // En fazla 10 malzeme sınırı
-        updatedList.push(value);
+      // Eğer seçildiyse ve 10 malzeme sınırını aşmıyorsa ekle
+      if (updatedIngredients.length < 10) {
+        updatedIngredients.push(value);
       } else {
         alert("En fazla 10 malzeme seçebilirsiniz!");
-        return;
+        return; // İşlemi durdur
       }
     } else {
-      updatedList = updatedList.filter(item => item !== value);
+      // Seçim kaldırıldıysa diziden çıkar
+      updatedIngredients = updatedIngredients.filter(item => item !== value);
     }
 
-    setFormData({ ...formData, ingredients: updatedList });
+    setFormData({ ...formData, ingredients: updatedIngredients });
   };
 
-  // Adet değiştirme
-  const changeQuantity = (type) => {
-    if (type === 'inc') setQuantity(quantity + 1);
-    if (type === 'dec' && quantity > 1) setQuantity(quantity - 1);
+// ... bileşen içi
+
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+
+  // Figma'daki sipariş özeti için gereken veriler
+  const orderSummary = {
+    name: "Position Absolute Acı Pizza",
+    size: formData.size,         // State'indeki seçili boyut
+    dough: formData.thickness,   // State'indeki seçili hamur
+    ingredients: formData.ingredients, // Seçili malzemeler dizisi
+    totalPrice: grandTotal,      // Hesapladığın toplam fiyat
+    extraPrice: totalIngredientsPrice // Sadece ek malzemelerin fiyatı
   };
+
+  // v5 usulü state ile yönlendirme
+  history.push({
+  pathname: '/success',
+  state: {
+    ...formData, // Tüm formu gönder
+    name: "Position Absolute Acı Pizza",
+    totalPrice: grandTotal,
+    extraPrice: totalIngredientsPrice
+  }
+});
+};
 
   // Dinamik Fiyat Hesaplama
-  const totalSelectionsPrice = formData.ingredients.length * ingredientPrice;
-  const grandTotal = (basePrice + totalSelectionsPrice) * quantity;
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Sipariş Gönderildi:", { ...formData, quantity, grandTotal });
-  };
+  const totalIngredientsPrice = formData.ingredients.length * ingredientPrice;
+  const grandTotal = (basePrice + totalIngredientsPrice) * quantity;
+  const handleChange = (e) => {
+  const { name, value, type, checked } = e.target;
+  
+  if (type === 'checkbox') {
+    // Malzemeler için özel kontrol
+    let newIngredients = [...formData.ingredients];
+    if (checked) {
+      newIngredients.push(value);
+    } else {
+      newIngredients = newIngredients.filter(item => item !== value);
+    }
+    setFormData({ ...formData, ingredients: newIngredients });
+  } else {
+    // Boyut ve Hamur için standart kontrol
+    setFormData({ ...formData, [name]: value });
+  }
+};
 
   return (
-    <div className="order-form-page">
-      {/* 1. SAYFA BAŞLIĞI / LOGO BANTU */}
-      <header className="main-header">
-        <div className="container">
-          <img src="/pictures/logo.svg" alt="Teknolojik Yemekler" className="main-logo" />
-        </div>
+    <div className="order-form-wrapper" style={{ 
+    display: 'flex', 
+    flexDirection: 'column', 
+    alignItems: 'center', // İçindeki her şeyi yatayda ortalar
+    width: '100%', 
+    margin: '0 auto' 
+}}>
+      {/* HEADER */}
+      <header style={{ backgroundColor: '#E22222', padding: '30px 0', textAlign: 'center' }}>
+        <h1 style={{ color: '#FFFFFF', margin: 0 }}>Teknolojik Yemekler</h1>
       </header>
 
-      {/* 2. ANA İÇERİK ALANI (Senin CSS sınıflarınla sarmalandı) */}
-      <main className="container content-area">
-        
-        {/* Pizza Tanıtım Kartı */}
-        <section className="pizza-detail">
-          <img src="/assets/iteration-2/pictures/pizzabaner.png" alt="Position Absolute Pizza" className="banner-img" />
-          <h2>Position Absolute Pizza</h2>
-          
-          <div className="product-info">
-            <span className="price">{basePrice.toFixed(2)}₺</span>
-            <div className="rating-info">
-              <span>4.9</span>
-              <span>(928)</span>
-            </div>
+      <main style={{ maxWidth: '600px', margin: '0 auto', padding: '40px 20px' }}>
+        {/* BANNER VE BILGILER (Bu kısımlar aynı) */}
+        <section className="pizza-intro">
+          <img src="/assets/iteration-2/pictures/pizzabaner.png" alt="Pizza" style={{ width: '100%', borderRadius: '8px' }} />
+          <nav style={{ margin: '20px 0', color: '#5f5f5f' }}>Anasayfa - <strong>Sipariş Oluştur</strong></nav>
+          <h2 style={{ fontSize: '24px', fontWeight: 'bold' }}>Position Absolute Pizza</h2>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '20px 0' }}>
+            <span style={{ fontSize: '28px', fontWeight: 'bold' }}>{basePrice.toFixed(2)}₺</span>
+            <span style={{ color: '#5f5f5f' }}>4.9 (928)</span>
           </div>
-          
-          <p className="description">
-            Frontent Dev olarak hala mikrososisle lezzetli bir pizza yiyemediyseniz, bu pizza tam size göre. 
-            Position Absolute kurallarına göre özel olarak dizayn edilmiş kenarları ve esnek (flex) malzemeleriyle 
-            midenizde harikalar yaratacak.
-          </p>
+          <p style={{ color: '#5f5f5f', lineHeight: '1.6' }}>Frontend Dev olarak hala position absolute kullanıyorsan bu çok acı pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli diğer malzemelerle kaplanmış, daha sonra geleneksel olarak odun ateşinde bir fırında yüksek sıcaklıkta pişirilen, genellikle yuvarlak, düzleştirilmiş mayalı buğday bazlı hamurdan oluşan İtalyan kökenli lezzetli bir yemektir. Küçük bir pizzaya bazen pizzetta denir.</p>
         </section>
 
-        {/* FORMA BAŞLIYORUZ */}
-        <form onSubmit={handleSubmit} className="order-form">
-          
-          {/* BOYUT VE HAMUR SEÇENEKLERİ (Yan yana duran bloklar) */}
-          <div className="selection-row">
-            
-            {/* BOYUT SEÇİMİ (Radio) */}
-            <div className="size-selection">
-              <h3>Boyut Seç <span className="required">*</span></h3>
-              <div className="radio-group">
-                {['S', 'M', 'L'].map((s) => (
-                  <label key={s} className="radio-label">
-                    <input 
-                      type="radio" 
-                      name="size" 
-                      value={s} 
-                      checked={formData.size === s} 
-                      onChange={handleChange} 
-                      required 
-                    />
-                    <span className="custom-radio">{s}</span>
+        <form onSubmit={handleSubmit}>
+          {/* BOYUT VE HAMUR (Yan yana, bu kısım aynı) */}
+          <div style={{ display: 'flex', gap: '40px', margin: '30px 0' }}>
+            <div style={{ flex: 1 }}>
+              <h3 style={{ fontSize: '18px' }}>Boyut Seç *</h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {['S', 'M', 'L'].map(size => (
+                  <label key={size} style={{ cursor: 'pointer' }}>
+                    <input type="radio" name="size" value={size} required onChange={(e) => setFormData({...formData, size: e.target.value})} style={{ marginRight: '10px' }} /> {size}
                   </label>
                 ))}
               </div>
             </div>
-
-            {/* HAMUR SEÇİMİ (Dropdown) */}
-            <div className="thickness-selection">
-              <h3>Hamur Seç <span className="required">*</span></h3>
+            <div style={{ flex: 1 }}>
+              <h3 style={{ fontSize: '18px' }}>Hamur Seç *</h3>
               <select 
-                name="thickness" 
-                value={formData.thickness} 
-                onChange={handleChange} 
-                required 
-                className="thickness-select"
-              >
-                <option value="" disabled>— Hamur Kalınlığı Seç —</option>
-                <option value="ince">İnce Kenar</option>
-                <option value="standart">Standart Kenar</option>
-                <option value="kalin">Kalın Kenar</option>
-              </select>
+  name="dough" 
+  value={formData.dough} 
+  onChange={handleChange} // Burada state güncellenmeli
+>
+  <option value="">Hamur Seç</option>
+  <option value="Süper İnce">Süper İnce</option>
+  <option value="İnce">İnce Kenar</option>
+  <option value="Kalın">Kalın Kenar</option>
+</select>
             </div>
           </div>
 
-          {/* MALZEME SEÇİMİ (Checkbox Grid) */}
-          <div className="ingredients-section">
-            <h3>Ek Malzemeler</h3>
-            <p className="info-text">En fazla 10 malzeme seçebilirsiniz. 5₺</p>
-            <div className="ingredients-grid">
-              {availableIngredients.map((ing) => (
-                <label key={ing} className="checkbox-label">
+          {/* MALZEMELER (Buraya ekledik) */}
+          <div style={{ margin: '30px 0' }}>
+            <h3 style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '10px' }}>Ek Malzemeler</h3>
+            <p style={{ color: '#5f5f5f', fontSize: '14px', marginBottom: '20px' }}>En fazla 10 malzeme seçebilirsiniz. {ingredientPrice}₺</p>
+            
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '15px' }}>
+              {availableIngredients.map(ing => (
+                <label key={ing} style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', fontSize: '14px' }}>
                   <input 
                     type="checkbox" 
                     value={ing} 
-                    checked={formData.ingredients.includes(ing)} 
                     onChange={handleIngredientChange} 
-                  />
+                    style={{ marginRight: '10px', width: '18px', height: '18px' }} 
+                  /> 
                   {ing}
                 </label>
               ))}
             </div>
           </div>
 
-          {/* SİPARİŞ NOTU */}
-          <div className="note-section">
-            <h3>Sipariş Notu</h3>
+          {/* SİPARİŞ NOTU (Aynı) */}
+          <div style={{ margin: '30px 0' }}>
+            <h3 style={{ fontSize: '18px' }}>Sipariş Notu</h3>
             <textarea 
-              name="note" 
-              value={formData.note} 
-              onChange={handleChange} 
               placeholder="Siparişine eklemek istediğin bir not var mı?"
-              className="note-textarea"
+              onChange={(e) => setFormData({...formData, note: e.target.value})}
+              style={{ width: '100%', height: '80px', padding: '12px', border: '1px solid #ccc', borderRadius: '4px' }}
             />
           </div>
 
-          <hr className="form-divider" />
+          <hr style={{ border: '0.5px solid #ccc', margin: '40px 0' }} />
 
-          {/* ADET VE TOPLAM KART BÖLÜMÜ */}
-          <div className="summary-row">
-            
-            {/* Adet Sayacı */}
-            <div className="quantity-counter">
-              <button type="button" onClick={() => changeQuantity('dec')}>-</button>
-              <span className="quantity-value">{quantity}</span>
-              <button type="button" onClick={() => changeQuantity('inc')}>+</button>
+          {/* FİYAT VE BUTON (Dinamik fiyat eklendi) */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+            <div style={{ display: 'flex' }}>
+              <button type="button" onClick={() => setQuantity(q => Math.max(1, q - 1))} style={counterBtnStyle}>-</button>
+              <div style={{ padding: '10px 20px', borderTop: '1px solid #ccc', borderBottom: '1px solid #ccc', fontWeight: 'bold' }}>{quantity}</div>
+              <button type="button" onClick={() => setQuantity(q => q + 1)} style={counterBtnStyle}>+</button>
             </div>
 
-            {/* Sipariş Toplam Kartı */}
-            <div className="price-summary-card">
-              <h4>Sipariş Toplamı</h4>
-              <div className="summary-item">
-                <span>Seçimler</span>
-                <span>{totalSelectionsPrice.toFixed(2)}₺</span>
+            <div style={{ border: '1px solid #ccc', borderRadius: '4px', width: '250px', padding: '20px', backgroundColor: '#fafafa' }}>
+              <h4 style={{ margin: '0 0 15px 0' }}>Sipariş Toplamı</h4>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
+                <span>Seçimler ({formData.ingredients.length} adet)</span>
+                <span>{totalIngredientsPrice.toFixed(2)}₺</span>
               </div>
-              <div className="summary-item total">
+              <div style={{ display: 'flex', justifyContent: 'space-between', color: '#E22222', fontWeight: 'bold', marginBottom: '20px' }}>
                 <span>Toplam</span>
                 <span>{grandTotal.toFixed(2)}₺</span>
               </div>
-              <button type="submit" className="submit-btn" id="order-button">
+              <button type="submit" style={submitBtnStyle}>
                 SİPARİŞ VER
               </button>
             </div>
-
           </div>
-
         </form>
       </main>
     </div>
   );
 }
+
+
+const counterBtnStyle = { padding: '10px 20px', border: '1px solid #ccc', backgroundColor: '#FDC913', cursor: 'pointer', fontWeight: 'bold' };
+const submitBtnStyle = { width: '100%', backgroundColor: '#FDC913', padding: '15px', border: 'none', borderRadius: '4px', fontWeight: 'bold', cursor: 'pointer' };
 
 export default OrderForm;

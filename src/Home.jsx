@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 function Home() {
   return (
     <div className="home-page-wrapper">
-      {/* 1. ÜST HEADER BÖLÜMÜ */}
       <header className="main-header">
         <div className="container">
           <img src="/pictures/logo.svg" alt="Teknolojik Yemekler Logo" className="main-logo" />
@@ -59,8 +58,8 @@ function Home() {
         {/* 4. MENÜ ÜRÜNLERİ SEKSİYONU */}
         <section className="menu-section">
           <div className="menu-header">
-            <p className="satisfy-text">en çok tercih edilen menüler</p>
-            <h2>Acıktıran Kodlara Doyurucu Lezzetler</h2>
+            <p className="satisfy-text">en çok paketlenen menüler</p>
+            <h2>Acıktıran Kodlara Doyuran Lezzetler</h2>
           </div>
 
           {/* Ürün Kartları Grid Yapısı */}

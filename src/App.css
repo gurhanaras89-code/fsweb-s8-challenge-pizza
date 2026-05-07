@@ -6,16 +6,30 @@
   --bej: #FAF7F2;
   --siyah: #1A1A1A;
 }
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* Sağ-sol kaymasını engeller */
+  background-color: #FDC913; /* Figma'daki o kırık beyaz/sarımsı arka plan */
+  font-family:"Roboto Condensed" , "Barlow" , "Quattrocento" , "Satisfy" ;
+  color: var(--koyu-gri);
+}
+
+#root {
+  width: 100%;
+}
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
- 
 }
-body {
-  font-family:"Roboto Condensed" , "Barlow" , "Quattrocento" , "Satisfy" ;
-  background-color: var(--bej);
-  color: var(--koyu-gri);
+.App {
+  display: flex;
+  justify-content: center; /* Yatayda ortalar */
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fafafa; /* Figma'daki o hafif kırık beyaz arka plan */
 }
 button {
   cursor: pointer;
@@ -53,6 +67,18 @@ button {
   color: var(--sari);
   font-size: 2rem;
 }
+/* App.css veya ilgili CSS dosyasına */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Yatayda ortalar */
+    width: 100%;
+}
+
+.content-section {
+    width: 100%;
+    max-width: 600px; /* İçeriğin yayılacağı maksimum alan */
+}
 h1 {
   font-family: 'Roboto Condensed';
   font-size: 4rem;
@@ -65,7 +91,9 @@ h1 {
   padding: 15px 45px;
   border-radius: 30px;
   font-size: 1.1rem;
-  margin-top: 20px;
+  margin-bottom: 40px;
+  transform: translateY(-230px);
+  
 }
 .order-link {
   background: transparent;
