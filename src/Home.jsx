@@ -62,6 +62,15 @@ function Home() {
             <h2>Acıktıran Kodlara Doyuran Lezzetler</h2>
           </div>
 
+          <nav class="menu-tabs">
+            <button className="tab-btn"><img src="../pictures/1.svg" alt=""/> Ramen</button>
+            <button className="tab-btn"><img src="../pictures/2.svg" alt=""/> Pizza</button>
+            <button className="tab-btn"><img src="../pictures/3.svg" alt=""/> Burger</button>
+            <button className="tab-btn"><img src="../pictures/4.svg" alt=""/> French fries</button>
+            <button className="tab-btn"><img src="../pictures/5.svg" alt=""/> Fast food</button>
+            <button className="tab-btn"><img src="../pictures/6.svg" alt=""/> Soft drinks</button>
+        </nav>
+
           {/* Ürün Kartları Grid Yapısı */}
           <div className="product-grid">
             {/* 1. Ürün */}
@@ -128,12 +137,12 @@ function Home() {
           <div className="footer-insta">
             <h4>Instagram</h4>
             <div className="insta-grid">
-              <img src="/assets/iteration-2/footer/insta/li-0.png" alt="" />
-              <img src="/assets/iteration-2/footer/insta/li-1.png" alt="" />
-              <img src="/assets/iteration-2/footer/insta/li-2.png" alt="" />
-              <img src="/assets/iteration-2/footer/insta/li-3.png" alt="" />
-              <img src="/assets/iteration-2/footer/insta/li-4.png" alt="" />
-              <img src="/assets/iteration-2/footer/insta/li-5.png" alt="" />
+              <img src="/pictures/li-0.png" alt="" />
+              <img src="/pictures/li-1.png" alt="" />
+              <img src="/pictures/li-2.png" alt="" />
+              <img src="/pictures/li-3.png" alt="" />
+              <img src="/pictures/li-4.png" alt="" />
+              <img src="/pictures/li-5.png" alt="" />
             </div>
           </div>
         </div>

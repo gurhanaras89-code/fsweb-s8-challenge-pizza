@@ -215,13 +215,14 @@ h1 {
     transition: 0.3s;
 }
 
+
 .tab-btn.active {
     background-color: var(--koyu-gri);
     color: white;
 }
 
 .product-grid {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     display: flex;
     justify-content: center;
     gap: 20px;
