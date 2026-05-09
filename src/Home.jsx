@@ -63,7 +63,7 @@ function Home() {
             <h2>Acıktıran Kodlara Doyuran Lezzetler</h2>
           </div>
 
-          <nav class="menu-tabs">
+          <nav className="menu-tabs">
             <button className="tab-btn"><img src="../pictures/1.svg" alt=""/> Ramen</button>
             <button className="tab-btn"><img src="../pictures/2.svg" alt=""/> Pizza</button>
             <button className="tab-btn"><img src="../pictures/3.svg" alt=""/> Burger</button>

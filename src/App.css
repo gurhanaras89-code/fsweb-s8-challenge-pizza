@@ -308,44 +308,73 @@ h1 {
 
 
 @media (max-width: 768px) {
-  .campaign-cards {
-    grid-template-columns: 1fr;
+  /* 1. Tüm sayfanın sağa kaymasını engelle */
+  .home-page-wrapper {
+    width: 100%;
+    overflow-x: hidden;
   }
-  h1 { font-size: 2.5rem; }
 
+  /* 2. Header ve Logo */
+  .main-logo {
+    max-width: 200px; /* Logoyu mobilde küçült */
+    height: auto;
+  }
+
+  h1 {
+    font-size: 1.8rem !important; /* Başlık çok büyük, küçültüyoruz */
+    line-height: 1.2;
+  }
+
+  /* 3. Kategori Navigasyonu (En çok taşan yer burası) */
   .category-nav .container {
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap; /* Sığmayanlar aşağı düşsün */
     justify-content: center;
-    gap: 20px;
-  }
-  .category-nav {
-    display: flex;
-    flex-wrap: wrap;       
-    justify-content: center; 
-    align-items: center;     
-    gap: 20px;               
+    gap: 15px;
+    padding: 10px;
     width: 100%;
   }
+
+  .category-nav div {
+    font-size: 12px; /* Yazıları küçült */
+    flex: 1 0 30%;   /* Mobilde her satıra 3 tane sığdırır */
+    text-align: center;
+  }
+
+  .category-nav img {
+    width: 30px; /* İkonları küçült */
+    height: auto;
+  }
+
+  /* 4. Kampanya Kartları (Alt alta gelmeliler) */
+  .campaign-cards {
+    display: flex;
+    flex-direction: column; /* Yan yana değil, alt alta */
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .card {
+    width: 100% !important; /* Kartlar tüm genişliği kaplasın */
+    margin-left: 0 !important;
+  }
+
+  /* 5. Ürün Grid Yapısı */
+  .product-grid {
+    display: flex;
+    flex-direction: column; /* Elemanları dikey sıraya dizer */
+    align-items: center;    /* Kartları yatayda ortalar */
+    gap: 20px;
+    padding: 10px;
+  }
+
   .product-card {
-    padding-left: 6% !important;
-    padding-right: 1%;
+    width: 100%;           /* Kartların ekranı tam kaplamasını sağlar */
+    max-width: 400px;      /* Çok geniş ekranlarda kartın aşırı büyümesini engeller */
   }
-  .main-footer {
-    text-align: left; 
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .footer-info {
-    margin-left: 2rem;
-  }
-  .footer-nav {
-    margin-left: 2rem;
-  }
-  .footer-insta {
-    margin-left: 2rem;
-  }
-  .footer-bottom p {
-    margin-left: 2rem;
+
+  .product-card img {
+    width: 100%; /* Resimler kartı kaplasın */
+    height: auto;
   }
 }
