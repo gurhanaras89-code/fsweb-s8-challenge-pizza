@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import Home1 from './Home1';
 
 function Success() {
   const location = useLocation();
@@ -66,6 +67,7 @@ function Success() {
           <span>{order?.totalPrice || "0.00"}₺</span>
         </div>
       </div>
+      <Home1 />
     </div>
   );
 }

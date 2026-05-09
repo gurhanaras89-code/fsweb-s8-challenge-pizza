@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './App.css';
+import Home1 from './Home1';
 
 function OrderForm() {
   const history = useHistory();
@@ -353,6 +354,7 @@ const handleSubmit = (e) => {
           </div>
         </form>
       </main>
+      <Home1 />
     </div>
   );
 }
