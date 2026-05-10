@@ -11,15 +11,12 @@ function Home() {
           <div className="hero-content">
             <p className="satisfy-text">fırsatı kaçırma</p>
             <h1>KOD ACIKTIRIR <br /> PİZZA, DOYURUR</h1>
-            {/* Sipariş Formuna Giden Buton */}
             <Link to="/pizza">
               <button className="hero-btn">ACIKTIM</button>
             </Link>
           </div>
         </div>
       </header>
-
-      {/* 2. KATEGORİ NAVİGASYON BARI */}
       <nav className="category-nav">
         <div className="container">
           <div className="nav-item"><img src="/pictures/1.svg" alt="" /> YENİ! Kore</div>
@@ -30,25 +27,19 @@ function Home() {
           <div className="nav-item"><img src="/pictures/6.svg" alt="" /> Gazlı İçecekler</div>
         </div>
       </nav>
-
-      {/* 3. REKLAM KAMPANYA KARTLARI ALANI */}
       <main className="container content-area">
         <section className="campaign-cards">
-          {/* Sol Büyük Kırmızı Kart */}
           <div className="card red-card">
             <h2>Özel <br /> Lezzetler</h2>
             <p>Position Absolute Acı Burger</p>
             <Link to="/pizza"><button className="order-link">SİPARİŞ VER</button></Link>
           </div>
           
-          {/* Sağ İki Küçük Kartın Sütunu */}
           <div className="side-cards">
-            {/* Siyah Kart */}
             <div className="card black-card">
               <h3>Hackathlon <br /> Burger Menü</h3>
               <Link to="/pizza"><button className="order-link">SİPARİŞ VER</button></Link>
             </div>
-            {/* Beyaz Kart */}
             <div className="card white-card">
               <h3><span>Çooook</span> hızlı <br /> npm gibi kurye</h3>
               <Link to="/pizza"><button className="order-link">SİPARİŞ VER</button></Link>
@@ -56,7 +47,6 @@ function Home() {
           </div>
         </section>
 
-        {/* 4. MENÜ ÜRÜNLERİ SEKSİYONU */}
         <section className="menu-section">
           <div className="menu-header">
             <p className="satisfy-text">en çok paketlenen menüler</p>
@@ -72,9 +62,7 @@ function Home() {
             <button className="tab-btn"><img src="../pictures/6.svg" alt=""/> Soft drinks</button>
         </nav>
 
-          {/* Ürün Kartları Grid Yapısı */}
           <div className="product-grid">
-            {/* 1. Ürün */}
             <div className="product-card">
               <img src="/pictures/food-1.png" alt="Terminal Pizza" />
               <h4>Terminal Pizza</h4>
@@ -85,7 +73,6 @@ function Home() {
               </div>
             </div>
 
-            {/* 2. Ürün */}
             <div className="product-card">
               <img src="/pictures/food-2.png" alt="Position Absolute Pizza" />
               <h4>Position Absolute Pizza</h4>
@@ -96,7 +83,6 @@ function Home() {
               </div>
             </div>
 
-            {/* 3. Ürün */}
             <div className="product-card">
               <img src="/pictures/food-3.png" alt="useEffect Tavuklu Burger" />
               <h4>useEffect Tavuklu Burger</h4>

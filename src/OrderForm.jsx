@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './App.css';
-import Home1 from './Home1';
 import axios from 'axios';
 
 function OrderForm() {
@@ -313,7 +312,7 @@ function OrderForm() {
           </div>
         </form>
       </main>
-
+      
     </div>
   );
 }
