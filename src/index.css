@@ -1,9 +1,9 @@
 
 body, html {
   width: 100%;
-  overflow-x: hidden; /* Sağ-sol kaymasını engellemek için şart */
+  overflow-x: hidden; 
 }
-/* Header içindeki sınırlayıcıyı kaldır */
+
 .main-header .container {
     max-width: none !important;
     width: 100% !important;
@@ -11,16 +11,16 @@ body, html {
     padding: 0 !important;
 }
 
-/* Tüm sayfayı saran genel App kutusundaki padding'i sıfırla */
+
 .App {
     padding: 0 !important;
     margin: 0 !important;
     max-width: 100vw !important;
 }
 .main-header {
-  background-color: #E22222; /* Teknolojik Yemekler kırmızısı */
-  width: 100vw; /* Ekranın tam genişliği */
-  padding: 50px 0; /* Yukarıdan aşağıdan boşluk */
+  background-color: #E22222; 
+  width: 100vw; 
+  padding: 50px 0; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,7 +29,7 @@ body, html {
 
 .main-header h1 {
   color: white;
-  font-family: 'Barlow', sans-serif; /* Figma'daki font */
+  font-family: 'Barlow', sans-serif;
   font-size: 45px;
   font-weight: bold;
   letter-spacing: -1.5px;
@@ -37,11 +37,8 @@ body, html {
   flex-direction: column;
   align-items: center;
   
-  /* Üstten daha fazla boşluk verip içeriği aşağı itmek yerine, 
-     alttaki boşluğu azaltarak içeriği yukarı çekiyoruz */
   padding-top: 40px; 
-  padding-bottom: 250px; /* Bu değeri pizzanın durumuna göre küçültebilirsin */
+  padding-bottom: 250px; 
   
-  /* Eğer her şey çok ortalıysa şunu dene: */
   justify-content: flex-start;
 }

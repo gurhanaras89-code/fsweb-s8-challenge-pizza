@@ -10,8 +10,8 @@ body, html {
   margin: 0;
   padding: 0;
   width: 100%;
-  overflow-x: hidden; /* Sağ-sol kaymasını engeller */
-  background-color: #FDC913; /* Figma'daki o kırık beyaz/sarımsı arka plan */
+  overflow-x: hidden; 
+  background-color: #FDC913; 
   font-family:"Roboto Condensed" , "Barlow" , "Quattrocento" , "Satisfy" ;
   color: var(--koyu-gri);
 }
@@ -26,10 +26,10 @@ body, html {
 }
 .App {
   display: flex;
-  justify-content: center; /* Yatayda ortalar */
+  justify-content: center; 
   width: 100%;
   min-height: 100vh;
-  background-color: #fafafa; /* Figma'daki o hafif kırık beyaz arka plan */
+  background-color: #fafafa; 
 }
 button {
   cursor: pointer;
@@ -67,17 +67,17 @@ button {
   color: var(--sari);
   font-size: 2rem;
 }
-/* App.css veya ilgili CSS dosyasına */
+
 .main-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Yatayda ortalar */
+    align-items: center; 
     width: 100%;
 }
 
 .content-section {
     width: 100%;
-    max-width: 600px; /* İçeriğin yayılacağı maksimum alan */
+    max-width: 600px; 
 }
 h1 {
   font-family: 'Roboto Condensed';
@@ -308,27 +308,26 @@ h1 {
 
 
 @media (max-width: 768px) {
-  /* 1. Tüm sayfanın sağa kaymasını engelle */
+ 
   .home-page-wrapper {
     width: 100%;
     overflow-x: hidden;
   }
 
-  /* 2. Header ve Logo */
+  
   .main-logo {
-    max-width: 200px; /* Logoyu mobilde küçült */
+    max-width: 200px; 
     height: auto;
   }
 
   h1 {
-    font-size: 1.8rem !important; /* Başlık çok büyük, küçültüyoruz */
+    font-size: 1.8rem !important; 
     line-height: 1.2;
   }
 
-  /* 3. Kategori Navigasyonu (En çok taşan yer burası) */
   .category-nav .container {
     display: flex;
-    flex-wrap: wrap; /* Sığmayanlar aşağı düşsün */
+    flex-wrap: wrap; 
     justify-content: center;
     gap: 15px;
     padding: 10px;
@@ -336,45 +335,45 @@ h1 {
   }
 
   .category-nav div {
-    font-size: 12px; /* Yazıları küçült */
-    flex: 1 0 30%;   /* Mobilde her satıra 3 tane sığdırır */
+    font-size: 12px; 
+    flex: 1 0 30%;   
     text-align: center;
   }
 
   .category-nav img {
-    width: 30px; /* İkonları küçült */
+    width: 30px; 
     height: auto;
   }
 
-  /* 4. Kampanya Kartları (Alt alta gelmeliler) */
+  
   .campaign-cards {
     display: flex;
-    flex-direction: column; /* Yan yana değil, alt alta */
+    flex-direction: column; 
     gap: 20px;
     padding: 20px;
   }
 
   .card {
-    width: 100% !important; /* Kartlar tüm genişliği kaplasın */
+    width: 100% !important; 
     margin-left: 0 !important;
   }
 
-  /* 5. Ürün Grid Yapısı */
+  
   .product-grid {
     display: flex;
-    flex-direction: column; /* Elemanları dikey sıraya dizer */
-    align-items: center;    /* Kartları yatayda ortalar */
+    flex-direction: column; 
+    align-items: center;    
     gap: 20px;
     padding: 10px;
   }
 
   .product-card {
-    width: 100%;           /* Kartların ekranı tam kaplamasını sağlar */
-    max-width: 400px;      /* Çok geniş ekranlarda kartın aşırı büyümesini engeller */
+    width: 100%;          
+    max-width: 400px;   
   }
 
   .product-card img {
-    width: 100%; /* Resimler kartı kaplasın */
+    width: 100%; 
     height: auto;
   }
 }
