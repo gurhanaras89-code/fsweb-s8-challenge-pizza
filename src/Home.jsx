@@ -54,17 +54,17 @@ function Home() {
           </div>
 
           <nav className="menu-tabs">
-            <button className="tab-btn"><img src="../pictures/1.svg" alt=""/> Ramen</button>
-            <button className="tab-btn"><img src="../pictures/2.svg" alt=""/> Pizza</button>
-            <button className="tab-btn"><img src="../pictures/3.svg" alt=""/> Burger</button>
-            <button className="tab-btn"><img src="../pictures/4.svg" alt=""/> French fries</button>
-            <button className="tab-btn"><img src="../pictures/5.svg" alt=""/> Fast food</button>
-            <button className="tab-btn"><img src="../pictures/6.svg" alt=""/> Soft drinks</button>
+            <button className="tab-btn"><img src="/public/pictures/1.svg" alt=""/> Ramen</button>
+            <button className="tab-btn"><img src="/public/pictures/2.svg" alt=""/> Pizza</button>
+            <button className="tab-btn"><img src="/public/pictures/3.svg" alt=""/> Burger</button>
+            <button className="tab-btn"><img src="/public/pictures/4.svg" alt=""/> French fries</button>
+            <button className="tab-btn"><img src="/public/pictures/5.svg" alt=""/> Fast food</button>
+            <button className="tab-btn"><img src="/public/pictures/6.svg" alt=""/> Soft drinks</button>
         </nav>
 
           <div className="product-grid">
             <div className="product-card">
-              <img src="/pictures/food-1.png" alt="Terminal Pizza" />
+              <img src="/public/pictures/food-1.png" alt="Terminal Pizza" />
               <h4>Terminal Pizza</h4>
               <div className="product-info">
                 <span>4.9</span>
@@ -74,7 +74,7 @@ function Home() {
             </div>
 
             <div className="product-card">
-              <img src="/pictures/food-2.png" alt="Position Absolute Pizza" />
+              <img src="/public/pictures/food-2.png" alt="Position Absolute Pizza" />
               <h4>Position Absolute Pizza</h4>
               <div className="product-info">
                 <span>4.9</span>
@@ -84,7 +84,7 @@ function Home() {
             </div>
 
             <div className="product-card">
-              <img src="/pictures/food-3.png" alt="useEffect Tavuklu Burger" />
+              <img src="/public/pictures/food-3.png" alt="useEffect Tavuklu Burger" />
               <h4>useEffect Tavuklu Burger</h4>
               <div className="product-info">
                 <span>4.9</span>

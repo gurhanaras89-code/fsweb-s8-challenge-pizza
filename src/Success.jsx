@@ -11,7 +11,7 @@ function Success() {
         display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: 'white', textAlign: 'center', margin: 0, padding: '20px'
       }}>
         <img
-          src="/pictures/logo.svg" alt="Teknolojik Yemekler Logo"
+          src="/public/pictures/logo.svg" alt="Teknolojik Yemekler Logo"
           style={{ width: '300px', marginBottom: '10px', transform: "translateY(-35px)" }} />
         <h2 style={{ fontFamily: 'Satisfy', color: '#FDC913', fontSize: '32px' }}>lezzetin yolda</h2>
         <h1 style={{ fontSize: '48px', fontWeight: '300', margin: '20px 0' }}>

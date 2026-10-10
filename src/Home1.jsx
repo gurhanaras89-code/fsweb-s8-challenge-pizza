@@ -9,9 +9,9 @@ function Home1() {
         <div className="container footer-content">
           <div className="footer-info">
             <h3>Teknolojik <br /> Yemekler</h3>
-            <p><img src="/pictures/icon-1.png" alt="" /> 341 Londonderry Road, İstanbul Türkiye</p>
-            <p><img src="/pictures/icon-2.png" alt="" /> aciktim@teknolojikyemekler.com</p>
-            <p><img src="/pictures/icon-3.png" alt="" /> +90 216 123 45 67</p>
+            <p><img src="/public/pictures/icon-1.png" alt="" /> 341 Londonderry Road, İstanbul Türkiye</p>
+            <p><img src="/public/pictures/icon-2.png" alt="" /> aciktim@teknolojikyemekler.com</p>
+            <p><img src="/public/pictures/icon-3.png" alt="" /> +90 216 123 45 67</p>
           </div>
           <div className="footer-nav">
             <h4>Sıcak Menüler</h4>
@@ -27,12 +27,12 @@ function Home1() {
           <div className="footer-insta">
             <h4>Instagram</h4>
             <div className="insta-grid">
-              <img src="/pictures/li-0.png" alt="" />
-              <img src="/pictures/li-1.png" alt="" />
-              <img src="/pictures/li-2.png" alt="" />
-              <img src="/pictures/li-3.png" alt="" />
-              <img src="/pictures/li-4.png" alt="" />
-              <img src="/pictures/li-5.png" alt="" />
+              <img src="/public/pictures/li-0.png" alt="" />
+              <img src="/public/pictures/li-1.png" alt="" />
+              <img src="/public/pictures/li-2.png" alt="" />
+              <img src="/public/pictures/li-3.png" alt="" />
+              <img src="/public/pictures/li-4.png" alt="" />
+              <img src="/public/pictures/li-5.png" alt="" />
             </div>
           </div>
         </div>
