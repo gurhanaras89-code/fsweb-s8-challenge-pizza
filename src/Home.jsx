@@ -7,7 +7,7 @@ function Home() {
     <div className="home-page-wrapper">
       <header className="main-header">
         <div className="container">
-          <img src="/pictures/logo.svg" alt="Teknolojik Yemekler Logo" className="main-logo" />
+          <img src="/public/pictures/logo.svg" alt="Teknolojik Yemekler Logo" className="main-logo" />
           <div className="hero-content">
             <p className="satisfy-text">fırsatı kaçırma</p>
             <h1>KOD ACIKTIRIR <br /> PİZZA, DOYURUR</h1>
@@ -19,12 +19,12 @@ function Home() {
       </header>
       <nav className="category-nav">
         <div className="container">
-          <div className="nav-item"><img src="/pictures/1.svg" alt="" /> YENİ! Kore</div>
-          <div className="nav-item active"><img src="/pictures/2.svg" alt="" /> Pizza</div>
-          <div className="nav-item"><img src="/pictures/3.svg" alt="" /> Burger</div>
-          <div className="nav-item"><img src="/pictures/4.svg" alt="" /> Kızartmalar</div>
-          <div className="nav-item"><img src="/pictures/5.svg" alt="" /> Fast Food</div>
-          <div className="nav-item"><img src="/pictures/6.svg" alt="" /> Gazlı İçecekler</div>
+          <div className="nav-item active"><img src="/public/pictures/2.svg" alt="" /> Pizza</div>
+          <div className="nav-item"><img src="/public/pictures/3.svg" alt="" /> Burger</div>
+          <div className="nav-item"><img src="/public/pictures/4.svg" alt="" /> Kızartmalar</div>
+          <div className="nav-item"><img src="/public/pictures/1.svg" alt="" /> YENİ! Kore</div>
+          <div className="nav-item"><img src="/public/pictures/5.svg" alt="" /> Fast Food</div>
+          <div className="nav-item"><img src="/public/pictures/6.svg" alt="" /> Gazlı İçecekler</div>
         </div>
       </nav>
       <main className="container content-area">
